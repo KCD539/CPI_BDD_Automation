@@ -14,21 +14,37 @@ public class CPI_Steps {
 
     WebDriver driver;
 
-    CPI_HomePage cpi_HomePage;
+    CPI_HomePage cpi_Homepage;
     CPI_FindTraining cpi_findTraining;
 
     @Before
     public void setup(){
         driver = Driver.getDriver();
-        cpi_HomePage = new CPI_HomePage();
+        cpi_Homepage = new CPI_HomePage();
         cpi_findTraining = new CPI_FindTraining();
 
     }
 
+
+        //switch case
+        //find training
+        //apply filters
+
+
     @When("user clicks on {string} link")
-    public void user_clicks_on (String key) {
-        cpi_HomePage.findTrainingLink.click();
-        cpi_findTraining.applyFilters.click();
+    public void user_clicks_on(String link) {
+        System.out.printf(link);
+        switch (link) {
+            case "FIND TRAINING":
+                cpi_Homepage.findTrainingLink.click();
+                break;
+            case "APPLY FILTERS":
+                cpi_findTraining.applyFilters.click();
+                break;
+            default:
+                System.out.println("Link text is not properly defined in the feature file!!!");
+        }
+
     }
 
     @Then("user should be navigated to {string}")

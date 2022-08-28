@@ -31,6 +31,7 @@
           When user clicks on "Classroom culture" link
           When user clicks on "Dementia capable care" link
           # would 2-5 be a list under "CPI Behavior Management and De‑escalation Training Solutions"
+        # make a switch case instead of seperate lines
 
 
         Scenario:
