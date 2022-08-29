@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebDriver;
-
 import java.util.List;
 
 public class CPI_HomePage {
@@ -21,7 +20,10 @@ public class CPI_HomePage {
     @FindBy(xpath = "//a[.='Find Training']")
     public WebElement findTrainingLink;
 
-    @FindBy(id = "//ul[@class='main-nav navbar-nav mx-auto']")
-    public static List<WebElement> mainNavBar;
+    @FindBy(xpath = "//ul[@class='main-nav navbar-nav mx-auto']//li[@class='nav-item dropdown megamenu']")
+    public List<WebElement> mainNavBar;
+
+    @FindBy(xpath = "//a[contains(text(),'My Account')]")
+    public WebElement myAccount;
 
 }
