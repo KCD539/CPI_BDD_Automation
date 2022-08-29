@@ -6,54 +6,49 @@ import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 import org.junit.Assert;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pages.CPI_FindTraining;
 import pages.CPI_HomePage;
+import utils.ActionsUtil;
 import utils.Driver;
+import static steps.Hooks.*;
 
 public class CPI_Steps {
-
-    WebDriver driver;
-
-    CPI_HomePage cpi_Homepage;
-    CPI_FindTraining cpi_findTraining;
-
-    @Before
-    public void setup(){
-        driver = Driver.getDriver();
-        cpi_Homepage = new CPI_HomePage(driver);
-        cpi_findTraining = new CPI_FindTraining();
-
-    }
-
-        //switch case
-        //find training
-        //apply filters
-
 
     @Then("user clicks on {string} link")
     public void user_clicks_on(String link) {
         switch (link) {
             case "FIND TRAINING":
-                cpi_Homepage.findTrainingLink.click();
+
+                cpi_homePage.findTrainingLink.click();
                 break;
             case "APPLY FILTERS":
+
                 cpi_findTraining.applyFilters.click();
                 break;
             default:
                 System.out.println("Link text is not properly defined in the feature file!!!");
         }
-
-    }
-
-    @Then("user should be navigated to {string}")
-    public void user_should_be_navigated_to(String url) {
-        driver.get(url);
     }
 
     @Then("under {string} user selects {string} in checkbox")
-    public void under_user_selects_in_checkbox(String title, String fieldCheckBox){
-        // Write code here
+    public void under_user_selects_in_checkbox(String title, String fieldCheckBox) {
+        WebElement element = driver.findElement(By.xpath("//h4[contains(text(),'"+ title +"')]"));
+        ActionsUtil.moveToElement(element);
+        switch (fieldCheckBox) {
+            case "Become a Certified Instructor":
+               cpi_findTraining.becomeACretifiedInstructor.click();
+                break;
+            case "Classroom Culture":
+                cpi_findTraining.classroomCulture.click();
+                break;
+            default:
+                System.out.println("Link text is not properly defined in the feature file!!!");
+        }
+
+
     }
 
     @Then("under {string} user selects {string} from dropdown")
