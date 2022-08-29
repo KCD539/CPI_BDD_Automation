@@ -48,7 +48,7 @@ public class Driver {
                 default:
                     throw new NotFoundException("Browser IS NOT DEFINED properly!!!");
             }
-            if(!ConfigReader.getProperty("browser").equals("headless")){
+            if (!ConfigReader.getProperty("browser").equals("headless")){
                 driver.manage().window().maximize();
                 driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigReader.getProperty("implicitWait")), TimeUnit.SECONDS);
             }
@@ -57,12 +57,12 @@ public class Driver {
     }
 
     public static void quitDriver(){
-        try{
-            Thread.sleep(3000);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+//        try{
+//            Thread.sleep(3000);
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
         if(driver != null){
             driver.manage().deleteAllCookies();
             driver.quit();

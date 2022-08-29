@@ -1,5 +1,6 @@
 package steps;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
@@ -20,20 +21,18 @@ public class CPI_Steps {
     @Before
     public void setup(){
         driver = Driver.getDriver();
-        cpi_Homepage = new CPI_HomePage();
+        cpi_Homepage = new CPI_HomePage(driver);
         cpi_findTraining = new CPI_FindTraining();
 
     }
-
 
         //switch case
         //find training
         //apply filters
 
 
-    @When("user clicks on {string} link")
+    @Then("user clicks on {string} link")
     public void user_clicks_on(String link) {
-        System.out.printf(link);
         switch (link) {
             case "FIND TRAINING":
                 cpi_Homepage.findTrainingLink.click();
@@ -76,6 +75,7 @@ public class CPI_Steps {
     @Then("user should see Main Menu navigation items")
     public void user_should_see_Main_menu_navigation_items(DataTable siteHeader) {
         for(int i = 0; i < siteHeader.asList().size(); i++){
+            System.out.println(CPI_HomePage.mainNavBar.get(i).getText());
             Assert.assertEquals(siteHeader.asList().get(i), CPI_HomePage.mainNavBar.get(i).getText());
         }
     }
