@@ -15,6 +15,4 @@ Explanation of framework
 7. I use a page object model design pattern and maintain a separate class for each webpage. Each page class stores the members, locators, and associated methods for each webpage. This helps with refactoring.
 8. I have a base class for the common functions, hooks class, and a very useful utility class for the repetitive methods which helps me achieve better usability.
 9. The runner class is used to run steps classes, run execute test suites, save reports, and more.
-10. Smoke and Regression suite 
-    A. SMOKE  mvn clean test -Dcucumber".options=--tags"@Smoke 
-    B. REGRESSION mvn clean test -Dcucumber.options=”--tags @Regression” 
+
